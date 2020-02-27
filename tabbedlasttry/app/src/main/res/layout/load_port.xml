@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="23dp" />
+
+    <Button
+        android:id="@+id/LevelThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="Inner"
+        android:text="Inner hole" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="36dp" />
+
+    <Button
+        android:id="@+id/LevelTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="Outer"
+        android:text="Outer Hole" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="55dp" />
+
+    <Button
+        android:id="@+id/LevelOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="Lower"
+        android:text="Lower hole" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="102dp" />
+
+</LinearLayout>

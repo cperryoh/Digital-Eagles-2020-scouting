@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/SSName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:ems="10"
+        android:hint="Scouter Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/SSTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:ems="10"
+        android:hint="Team Number"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/SSComment"
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
+        android:backgroundTint="@color/colorAccent"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Ex: Overall Game plan, robot design, driver competency etc"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/EnterSuperScout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter" />
+</LinearLayout>

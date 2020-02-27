@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#800000</color>
+    <color name="colorAccent">#fcca03</color>
+    <color name="tabTextColor">#FFFFFF</color>
+</resources>

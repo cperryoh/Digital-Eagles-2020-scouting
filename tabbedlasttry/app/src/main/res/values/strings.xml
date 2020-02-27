@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Digital Eagles Scouting</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="levelTitle"><u>Shooting ability(location)</u></string>
+    <string name="my_name"><u>Click here for setup</u></string>
+    <string-array name="starting_pos">
+        <item>Please Select </item>
+        <item>Left</item>
+        <item>Right</item>
+        <item>Middle</item>
+    </string-array>
+    <string-array name="shooting_disance">
+        <item>Select Their Maximum Shooting Distance</item>
+        <item>Unable To Shoot</item>
+        <item>In front of Starting Line</item>
+        <item>Behind Starting Line</item>
+        <item>Near Trench</item>
+    </string-array>
+    <string-array name="spinner">
+        <item>Unable</item>
+        <item>Three Rotations</item>
+        <item>Specific Color</item>
+    </string-array>
+    <string-array name="condition">
+        <item>Please Select a Condition</item>
+        <item>Working</item>
+        <item>Partially Broken</item>
+        <item>Broken (Not Moving)</item>
+    </string-array>
+    <string-array name="climb">
+        <item>Please Select a Climb</item>
+        <item>Unable</item>
+        <item>Attemped</item>
+        <item>Succeeded</item>
+    </string-array>
+    <string-array name="cap">
+        <item>Please select a capacity</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+</resources>

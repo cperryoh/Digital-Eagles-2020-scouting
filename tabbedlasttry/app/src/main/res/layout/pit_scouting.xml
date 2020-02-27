@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:tag="1">
+
+
+    <ScrollView
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="2">
+
+        <LinearLayout
+            android:id="@+id/mainWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:tag="3">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:ems="10"
+                android:hint="Scouter Name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/teamNumberPS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:ems="10"
+                android:hint="Team Number"
+                android:inputType="number" />
+
+            <Spinner
+                android:id="@+id/distance"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_above="@+id/button"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:entries="@array/shooting_disance"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startingPosLbl" />
+
+            <Spinner
+                android:id="@+id/capacity"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_above="@+id/button"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:entries="@array/cap"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startingPosLbl" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="General Strategy"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="all"
+                        android:text="All Strategies" />
+
+                    <CheckBox
+                        android:id="@+id/Defender"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="checkbox"
+                        android:text="Defender" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Loader" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="checkbox"
+                        android:text="General Scorer" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Shooting Ability (Location)"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="disable"
+                        android:text="Unable" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Lower Hole" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="checkbox"
+                        android:text="Outer Hole" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Inner Hole" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Color Wheel"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="disable"
+                        android:text="Unable" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:checked="false"
+                        android:tag="checkbox"
+                        android:text="Specific color" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="3-5 Rotations" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Climb"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="all"
+                        android:text="All" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="checkbox"
+                        android:text="Low Point" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Mid Point" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="High Point" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="checkbox"
+                        android:text="Can Slide On Bar" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Level During climb"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Able to Level On Climb" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Powercell Pickup"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="disable"
+                        android:text="Unable" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Loading Station" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Ground" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Trench"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkBox"
+                        android:text="Able to Go Through Trench" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Autonomous Period"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/autoCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Powercells scored during auto"
+                        android:inputType="number" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Able To Cross Line During Auto" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/Comments"
+                android:layout_width="match_parent"
+                android:layout_height="132dp"
+                android:backgroundTint="@color/colorAccent"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Comments(Example:drive train type, method of climb)"
+                android:inputType="textMultiLine" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="105dp"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="What Is Their Drive-Train"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/drive_train"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
+                        android:ems="10"
+                        android:hint="Ex: Mecanum,West Coast(Shifting Gearboxes), Swerve"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/enter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter data" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

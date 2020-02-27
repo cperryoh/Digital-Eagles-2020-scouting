@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/main_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/distance2"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_above="@+id/button"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:entries="@array/shooting_disance"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startingPosLbl" />
+
+            <Spinner
+                android:id="@+id/climb_spinner"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_above="@+id/button"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:entries="@array/climb"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startingPosLbl" />
+
+            <Spinner
+                android:id="@+id/condition2"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_above="@+id/button"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:entries="@array/condition"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startingPosLbl" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Powercell Collection"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="disable"
+                        android:text="Unable To Collect" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkBox"
+                        android:text="Pick Up Powercells From Ground" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkBox"
+                        android:text="Get Powercells From Loading Zone" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Defense"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Defended against" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkbox"
+                        android:text="Defensive Robot" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:tag="Check boxes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/box"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="lable"
+                        android:text="Balance"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="disable"
+                        android:text="Unable" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="checkBox"
+                        android:text="Balanced" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/enterData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter data" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
