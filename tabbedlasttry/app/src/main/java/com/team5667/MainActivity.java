@@ -12,6 +12,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -59,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
     static int matchTab = 4;
     static int preMatchTab = 3;
     final SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), new tab[]{setupWindowFrag, supperScoutFrag, pitScoutFrag, prematchFrag, matchFrag, postmatchFrag});
-
+    public static int CheckedPointsVal(CheckBox box, int val){
+        return box.isChecked() ? val:0;
+    }
     public StringRequest pushSuperScout(final String comment, final String team, final String scouter, final Context context) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, setupWindowFrag.getWebApp(),
                 new Response.Listener<String>() {
@@ -73,14 +76,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-
+                        requests.add(pushSuperScout(comment,team,scouter,context));
 
                     }
                 }
         ) {
-            public Map<String, String> getVals(){
-                return getParams();
-            }
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parmas = new HashMap<>();
@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                addData(data,tags,sheet);
             }
         }
 
@@ -228,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                        requests.add(pushComment(comment,driveTrain,team,scouter,context));
 
 
                     }

@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
@@ -21,9 +24,12 @@ public class postMatch extends tab {
     ArrayList<checkBoxGroup> groups = new ArrayList<>();
     MainActivity activity;
     Spinner distance;
+    CheckBox parked;
     Spinner climb;
     public boolean leftDuringAuto;
-    public boolean hasMatchData=false;
+    public boolean hasMatchData = false;
+
+    CheckBox balanced;
     Spinner condition;
     public ArrayList<ArrayList<String>> dataMatch = new ArrayList<>();
 
@@ -48,9 +54,11 @@ public class postMatch extends tab {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(layout, container, false);
+        balanced = view.findViewById(R.id.balancedPost);
+        climb = view.findViewById(R.id.climb_spinner);
+        distance = view.findViewById(R.id.distance2);
+        parked = view.findViewById(R.id.parked);
         condition = view.findViewById(R.id.condition2);
-        climb=view.findViewById(R.id.climb_spinner);
-        distance =  view.findViewById(R.id.distance2);
         //adds tags for google sheet
         activity = (MainActivity) getActivity();
         tagsMatch.add("team");
@@ -58,11 +66,32 @@ public class postMatch extends tab {
         tagsMatch.add("time");
         tagsMatch.add("During autnomomous");
         tagsMatch.add("location");
+        tagsMatch.add("Points");
         Button button = (Button) view.findViewById(R.id.enterData);
+        climb.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                if (pos != 0 && pos != 1) {
+                    parked.setChecked(false);
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        parked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if (checked) {
+                    climb.setSelection(1);
+                }
+            }
+        });
         //makes check box groups
         LinearLayout layout = view.findViewById(R.id.main_post);
-        groups = checkBoxGroup.generateGroups( layout, getContext());
+        groups = checkBoxGroup.generateGroups(layout, getContext());
 
         //push of header data and match data
         button.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +105,14 @@ public class postMatch extends tab {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 //makes queue for data
-                                if (MainActivity.checkSpinnerChange(condition)&&MainActivity.checkSpinnerChange(climb)&&MainActivity.checkSpinnerChange(distance)) {
+                                if (MainActivity.checkSpinnerChange(condition) && MainActivity.checkSpinnerChange(climb) && MainActivity.checkSpinnerChange(distance)) {
+                                    int finalScore=0;
+                                    if (hasMatchData) {
+                                        finalScore = activity.matchFrag.getPoints();
+                                    }
+                                    finalScore += MainActivity.CheckedPointsVal(parked, 5);
+                                    finalScore += MainActivity.CheckedPointsVal(balanced, 15);
+                                    finalScore += climb.getSelectedItemPosition() < 1 ? 25 : 0;
                                     activity = (MainActivity) getActivity();
 
                                     //adds color wheel to match header data
@@ -112,11 +148,13 @@ public class postMatch extends tab {
                                     tags.add("Shooting Distance");
                                     data.add(distance.getSelectedItem().toString());
 
+                                    tags.add("Points scored");
+                                    data.add(Integer.toString(finalScore));
 
                                     //tracks match data
                                     if (hasMatchData) {
                                         for (int i = 0; i < dataMatch.size(); i++) {
-                                           activity.pushData(activity.addData(dataMatch.get(i),tagsMatch,"Match data"));
+                                            activity.pushData(activity.addData(dataMatch.get(i), tagsMatch, "Match data"));
                                         }
                                     }
 
@@ -139,6 +177,7 @@ public class postMatch extends tab {
         });
         return view;
     }
+
     //clears all data in the check boxes
     void clearAll() {
         for (int i = 0; i < groups.size(); i++) {
@@ -156,11 +195,11 @@ public class postMatch extends tab {
     void reset() {
         clearAll();
         climb.setSelection(0);
-        dataMatch= new ArrayList<>();
-        tagsMatch=new ArrayList<>();
+        dataMatch = new ArrayList<>();
         distance.setSelection(0);
-        leftDuringAuto=false;
-        hasMatchData=false;
+        parked.setChecked(false);
+        leftDuringAuto = false;
+        hasMatchData = false;
         condition.setSelection(0);
     }
 

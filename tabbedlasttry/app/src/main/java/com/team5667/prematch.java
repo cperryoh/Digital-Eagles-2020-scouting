@@ -42,26 +42,7 @@ public class prematch extends tab {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.prematch, container, false);
         final Button button = (Button) view.findViewById(R.id.button);
-        Button reset = view.findViewById(R.id.reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new AlertDialog.Builder(view.getContext())
-                        .setTitle("Are you sure?")
-                        .setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                        ((MainActivity)getActivity()).resetMatch();
-                    }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                     //do nothing;
-                    }
-                });
-            }
-        });
         teamNumber = (EditText) view.findViewById(R.id.teamNum);
         name=view.findViewById(R.id.prematchName);
         roundNumber = (EditText) view.findViewById(R.id.roundNum);

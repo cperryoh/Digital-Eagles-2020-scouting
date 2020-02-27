@@ -20,6 +20,8 @@ import java.util.ArrayList;
 public class loadPort extends tab {
     match parent;
     timer run;
+
+    public int total;
     private final int maxTime;
     MainActivity activity;
     public loadPort(String tabText, int layout, timer run, int maxTime) {
@@ -46,8 +48,10 @@ public class loadPort extends tab {
 
         //add shot normally
         if (run.getTime() > 0) {
-            addAndPushData(sandstorm,tag);
+            addAndPushData(sandstorm,tag,run.getTime(),getVal(tag,sandstorm));
             Toast.makeText(getContext(), "Data tracked", Toast.LENGTH_SHORT).show();
+
+            calculatePoints(tag,sandstorm);
         } else {
             //add shot post match
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -65,8 +69,13 @@ public class loadPort extends tab {
             builder.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    addAndPushData(sandstorm,tag);
-                    Toast.makeText(getContext(), "Data tracked", Toast.LENGTH_SHORT).show();
+                    if (MainActivity.textNotEmpty(input)) {
+                        int time = Integer.parseInt(input.getText().toString());
+                        boolean sandstorm = time >= maxTime - 15;
+                        addAndPushData(sandstorm, tag,time,getVal(tag,sandstorm));
+                        calculatePoints(tag,sandstorm);
+                        Toast.makeText(getContext(), "Data tracked", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -75,15 +84,36 @@ public class loadPort extends tab {
             builder.show();
         }
     }
-    //pushes data to post match tab
-    void addAndPushData(boolean sandstorm,String tag){
+    int getVal(String tag,boolean sandstorm){
+        int value;
+        if (tag.equals("inner")) {
+            value = 3;
+        } else if (tag.equals("Outer")) {
+            value = 2;
+        } else {
+            value = 1;
+        }
+        return sandstorm ? value * 2 : value;
+    }
+    void calculatePoints(String tag,boolean sandstorm){
+        int value;
+        if (tag.equals("inner")) {
+            value = 3;
+        } else if (tag.equals("Outer")) {
+            value = 2;
+        } else {
+            value = 1;
+        }
+        total += sandstorm ? value * 2 : value;
+    }
+    void addAndPushData(boolean sandstorm, String tag,int time,int point) {
         ArrayList<String> data = new ArrayList<>();
         data.add(Integer.toString(activity.getTeamNumber()));
         data.add(Integer.toString(activity.getRoundNumer()));
-        data.add(Integer.toString(activity.matchFrag.run.getTime()));
+        data.add(Integer.toString(time));
         data.add(Boolean.toString(sandstorm));
         data.add(tag);
-
+        data.add(Integer.toString(point));
         //adds match to header data
         activity.postmatchFrag.dataMatch.add(data);
     }

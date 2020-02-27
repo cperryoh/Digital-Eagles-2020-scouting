@@ -96,7 +96,7 @@ public class pitScout extends tab {
                                     values.add(distance.getSelectedItem().toString());
 
                                     activity.pushData(activity.addData(MainActivity.mergeArrays(values, rawData.get(1)), MainActivity.mergeArrays(tags, rawData.get(0)), "Pit scouting"));
-                                    if (!comments.getText().toString().equals("")) {
+                                    if ((!comments.getText().toString().equals(""))||(!driveTrain.getText().toString().equals(""))) {
                                         activity.pushData(activity.pushComment(comments.getText().toString(),driveTrain.getText().toString(), teamNumber.getText().toString(), name.getText().toString(), getContext()));
                                     }
                                     clearAll();

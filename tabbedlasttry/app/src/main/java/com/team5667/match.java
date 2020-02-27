@@ -1,5 +1,7 @@
 package com.team5667;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -55,6 +57,7 @@ public class match extends tab {
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
         run.setTime(maxTime);
         crossed.setChecked(false);
+        loadPortFrag.total=0;
         tabs.getTabAt(0).select();
         crossed.setEnabled(true);
         setTabs(false,1);
@@ -71,13 +74,34 @@ public class match extends tab {
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         tabs=view.findViewById(R.id.nTab);
         final MainActivity mainActivity = (MainActivity) getActivity();
+        Button reset = view.findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle("Are you sure?")
+                        .setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        ((MainActivity)getActivity()).resetMatch();
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //do nothing;
+                    }
+                }).show();
+            }
+        });
+
         crossed=view.findViewById(R.id.crossed);
         Button end =view.findViewById(R.id.end);
         //on click listener for the end button
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(run.getTime()<=0){
+                if(run.getTime()>=0){
                     mainActivity.tabs.getTabAt(MainActivity.postMatchTab).select();
                     mainActivity.matchStarted=false;
                     mainActivity.postmatchFrag.leftDuringAuto=crossed.isChecked();
@@ -131,5 +155,12 @@ public class match extends tab {
         viewPager.beginFakeDrag();
         setTabs(false,1);
         return view;
+    }
+    public int getPoints(){
+        int overAll = loadPortFrag.total;
+        overAll+= MainActivity.CheckedPointsVal(colorWheelFrag.groups.get(0).checkBoxes.get(0),10);
+        overAll+=MainActivity.CheckedPointsVal(crossed,5);
+        overAll+= MainActivity.CheckedPointsVal(colorWheelFrag.groups.get(0).checkBoxes.get(1),20);
+        return overAll;
     }
 }
