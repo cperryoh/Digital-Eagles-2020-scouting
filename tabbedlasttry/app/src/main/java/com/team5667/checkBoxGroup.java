@@ -28,7 +28,7 @@ public class checkBoxGroup {
         this.context = context;
         this.sectionName = sectionName;
         for (int i = 0; i < boxes.size(); i++) {
-            checkBoxes.get(i).getBackground().setTint(context.getResources().getColor(R.color.colorAccent));
+            //checkBoxes.get(i).getBackground().setTint(context.getResources().getColor(R.color.colorAccent));
             checkBoxes.get(i).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                 @Override
@@ -49,7 +49,7 @@ public class checkBoxGroup {
                 }
             }
         });
-        specialBox.getBackground().setTint(context.getResources().getColor(R.color.colorAccent));
+        //specialBox.getBackground().setTint(context.getResources().getColor(R.color.colorAccent));
     }
     //no special box
     public checkBoxGroup(final ArrayList<CheckBox> boxes, String sectionName, final Context context) {
@@ -57,7 +57,7 @@ public class checkBoxGroup {
         this.sectionName = sectionName;
         this.context = context;
         for (int i = 0; i < boxes.size(); i++) {
-            checkBoxes.get(i).getBackground().setTint(context.getResources().getColor(R.color.colorAccent));
+            //checkBoxes.get(i).getBackground().setTint(context.getResources().getColor(R.color.colorAccent));
         }
         if (boxes.get(0).getTag().toString().equals("radial")) {
             boxes.get(0).setChecked(true);

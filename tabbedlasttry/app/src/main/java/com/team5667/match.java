@@ -54,7 +54,7 @@ public class match extends tab {
     //tbh tho it resets the progress bar and match scouting windows
     public void reset() {
         progressBar.setProgress(100);
-        progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+        //progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
         run.setTime(maxTime);
         crossed.setChecked(false);
         loadPortFrag.total=0;
@@ -101,14 +101,14 @@ public class match extends tab {
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(run.getTime()>=0){
+                if(run.getTime()<=0){
                     mainActivity.tabs.getTabAt(MainActivity.postMatchTab).select();
                     mainActivity.matchStarted=false;
                     mainActivity.postmatchFrag.leftDuringAuto=crossed.isChecked();
                 }
             }
         });
-        progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+        //progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
         progressBar.setProgress(progressBar.getMax());
         timeBox = (TextView) view.findViewById(R.id.time);
         timeBox.setText(Integer.toString(maxTime));
@@ -126,15 +126,15 @@ public class match extends tab {
                     double precentageDone = (double) progressBar.getProgress() / (double) progressBar.getMax();
                     //under 1/3 left
                     if (precentageDone <= (1.0 / 3.0)) {
-                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+                        //progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
                     }
                     //under 2/3 above 1/3
                     else if (precentageDone <= (2.0 / 3.0)) {
-                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
+                        //progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
                     }
                     //above 2/3
                     else {
-                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                        //progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
                     }
                     if(time<=maxTime-15){
                         crossed.setEnabled(false);
