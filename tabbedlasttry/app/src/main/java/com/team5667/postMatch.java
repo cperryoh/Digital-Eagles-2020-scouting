@@ -61,12 +61,7 @@ public class postMatch extends tab {
         condition = view.findViewById(R.id.condition2);
         //adds tags for google sheet
         activity = (MainActivity) getActivity();
-        tagsMatch.add("team");
-        tagsMatch.add("round");
-        tagsMatch.add("time");
-        tagsMatch.add("During autnomomous");
-        tagsMatch.add("location");
-        tagsMatch.add("Points");
+
         Button button = (Button) view.findViewById(R.id.enterData);
         climb.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

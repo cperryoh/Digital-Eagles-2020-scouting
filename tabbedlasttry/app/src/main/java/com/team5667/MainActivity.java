@@ -69,14 +69,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(context, response, Toast.LENGTH_LONG).show();
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-                        requests.add(pushSuperScout(comment,team,scouter,context));
+                        error.getCause().printStackTrace();
 
                     }
                 }
@@ -100,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
         stringRequest.setRetryPolicy(retryPolicy);
         return stringRequest;
     }
-
     void addOffLine() {
         if (requests.size() != 0) {
             AppController.getInstance().getRequestQueue().add(requests.get(0));
@@ -110,7 +108,29 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getBaseContext(), "Offline Data Queue Cleared", Toast.LENGTH_SHORT).show();
         return;
     }
+    public static void deleteCache(Context context) {
+        try {
+            File dir = context.getCacheDir();
+            deleteDir(dir);
+        } catch (Exception e) { e.printStackTrace();}
+    }
 
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+            return dir.delete();
+        } else if(dir!= null && dir.isFile()) {
+            return dir.delete();
+        } else {
+            return false;
+        }
+    }
     public boolean isNetworkAvailable() {
         ConnectivityManager manager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -129,16 +149,22 @@ public class MainActivity extends AppCompatActivity {
         Runnable run = new Runnable() {
             @Override
             public void run() {
-                handler.postDelayed(this, 500);
+                handler.postDelayed(this, 1000);
                 if (isNetworkAvailable() && requests.size() != 0) {
-
                     Toast.makeText(getBaseContext(), "Beginning To load queue", Toast.LENGTH_SHORT).show();
                     addOffLine();
+                    deleteCache(getApplicationContext());
                 }
                 return;
             }
         };
         run.run();
+        postmatchFrag.tagsMatch.add("team");
+        postmatchFrag.tagsMatch.add("round");
+        postmatchFrag.tagsMatch.add("time");
+        postmatchFrag.tagsMatch.add("During autnomomous");
+        postmatchFrag.tagsMatch.add("location");
+        postmatchFrag.tagsMatch.add("Points");
         mPrefs = getSharedPreferences("scouting app", 0);
         setContentView(R.layout.activity_main);
         ViewPager viewPager = findViewById(R.id.view_pager);
@@ -164,11 +190,9 @@ public class MainActivity extends AppCompatActivity {
 
     public StringRequest addData(final ArrayList<String> data, final ArrayList<String> tags, final String sheet) {
         Toast.makeText(getApplicationContext(), "Pushing data", Toast.LENGTH_SHORT).show();
-
         Response.Listener listener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
             }
         };
@@ -177,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-                addData(data,tags,sheet);
+                //addData(data,tags,sheet);
             }
         }
 
@@ -216,20 +240,18 @@ public class MainActivity extends AppCompatActivity {
     //all data pushed goes through this function and is pushed to the queue
     public StringRequest pushComment(final String comment, final String driveTrain, final String team, final String scouter, final Context context) {
         Toast.makeText(getApplicationContext(), "Pushing Comment", Toast.LENGTH_SHORT).show();
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, setupWindowFrag.getWebApp(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(context, response, Toast.LENGTH_LONG).show();
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-                        requests.add(pushComment(comment,driveTrain,team,scouter,context));
+                        //requests.add(pushComment(comment,driveTrain,team,scouter,context));
 
 
                     }

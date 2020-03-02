@@ -57,7 +57,7 @@ public class SetupWindow extends tab {
 
             webAppUrl.setText("https://script.google.com/macros/s/AKfycbyb2hmTm9u9QkqD3sH-6ynar0LKGENOPjy8IugUYoo7PRym9EU/exec");
             webAppUrl.setEnabled(false);
-            sheetUrl.setText("https://docs.google.com/spreadsheets/d/1ts-Y1DtuSovdfscT4tcc5Kbo2oo9H85-pwmDFufA1aE/edit#gid=0");
+            sheetUrl.setText("https://docs.google.com/spreadsheets/d/1ts-Y1DtuSovdfscT4tcc5Kbo2oo9H85-pwmDFufA1aE/edit#gid=1814728509");
             sheetUrl.setEnabled(false);
 
         }else{

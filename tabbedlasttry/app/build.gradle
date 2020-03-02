@@ -7,9 +7,9 @@ android {
         applicationId 'com.team5667'
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 6
+        versionCode 9
         multiDexEnabled = false
-        versionName "1.5"
+        versionName "1.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

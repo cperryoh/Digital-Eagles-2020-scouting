@@ -101,7 +101,7 @@ public class match extends tab {
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(run.getTime()<=0){
+                if(run.getTime()>=0){
                     mainActivity.tabs.getTabAt(MainActivity.postMatchTab).select();
                     mainActivity.matchStarted=false;
                     mainActivity.postmatchFrag.leftDuringAuto=crossed.isChecked();
