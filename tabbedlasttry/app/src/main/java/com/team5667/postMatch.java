@@ -24,10 +24,14 @@ public class postMatch extends tab {
     ArrayList<checkBoxGroup> groups = new ArrayList<>();
     MainActivity activity;
     Spinner distance;
+    CheckBox win;
+    public int sandStormShots;
+    public int lowerShots;
+    public int upperShots;
+    public int missedShots;
     CheckBox parked;
     Spinner climb;
     public boolean leftDuringAuto;
-    public boolean hasMatchData = false;
 
     CheckBox balanced;
     Spinner condition;
@@ -58,6 +62,7 @@ public class postMatch extends tab {
         climb = view.findViewById(R.id.climb_spinner);
         distance = view.findViewById(R.id.distance2);
         parked = view.findViewById(R.id.parked);
+        win=view.findViewById(R.id.win);
         condition = view.findViewById(R.id.condition2);
         //adds tags for google sheet
         activity = (MainActivity) getActivity();
@@ -101,10 +106,7 @@ public class postMatch extends tab {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 //makes queue for data
                                 if (MainActivity.checkSpinnerChange(condition) && MainActivity.checkSpinnerChange(climb) && MainActivity.checkSpinnerChange(distance)) {
-                                    int finalScore=0;
-                                    if (hasMatchData) {
-                                        finalScore = activity.matchFrag.getPoints();
-                                    }
+                                    int finalScore= activity.matchFrag.getPoints();
                                     finalScore += MainActivity.CheckedPointsVal(parked, 5);
                                     finalScore += MainActivity.CheckedPointsVal(balanced, 15);
                                     finalScore += climb.getSelectedItemPosition() < 1 ? 25 : 0;
@@ -125,9 +127,6 @@ public class postMatch extends tab {
                                     tags.add("team");
                                     data.add(activity.prematchFrag.teamNumber.getText().toString());
 
-                                    tags.add("starting position");
-                                    data.add(activity.prematchFrag.prePos.getSelectedItem().toString());
-
                                     tags.add("Condition");
                                     data.add(condition.getSelectedItem().toString());
 
@@ -146,12 +145,20 @@ public class postMatch extends tab {
                                     tags.add("Points scored");
                                     data.add(Integer.toString(finalScore));
 
-                                    //tracks match data
-                                    if (hasMatchData) {
-                                        for (int i = 0; i < dataMatch.size(); i++) {
-                                            activity.pushData(activity.addData(dataMatch.get(i), tagsMatch, "Match data"));
-                                        }
-                                    }
+                                    tags.add("Lower Shots");
+                                    data.add(Integer.toString(lowerShots));
+
+                                    tags.add("Upper Shots");
+                                    data.add(Integer.toString(upperShots));
+
+                                    tags.add("Missed Shots");
+                                    data.add(Integer.toString(missedShots));
+
+                                    tags.add("Auto Shots");
+                                    data.add(Integer.toString(sandStormShots));
+
+                                    tags.add("Win");
+                                    data.add(Boolean.toString(win.isChecked()));
 
                                     activity.pushData(activity.addData(data, tags, "Header data"));
                                     activity.resetMatch();
@@ -190,11 +197,15 @@ public class postMatch extends tab {
     void reset() {
         clearAll();
         climb.setSelection(0);
+        lowerShots=0;
+        sandStormShots=0;
+        upperShots=0;
+        win.setChecked(false);
+        missedShots=0;
         dataMatch = new ArrayList<>();
         distance.setSelection(0);
         parked.setChecked(false);
         leftDuringAuto = false;
-        hasMatchData = false;
         condition.setSelection(0);
     }
 

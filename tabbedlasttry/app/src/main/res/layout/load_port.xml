@@ -11,8 +11,8 @@
         android:id="@+id/LevelThree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:tag="Inner"
-        android:text="Inner hole" />
+        android:tag="missed"
+        android:text="Missed" />
 
     <Space
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:id="@+id/LevelTwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:tag="Outer"
+        android:tag="Upper"
         android:text="Outer Hole" />
 
     <Space
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:tag="Lower"
-        android:text="Lower hole" />
+        android:text="Lower Hole" />
 
     <Space
         android:layout_width="match_parent"

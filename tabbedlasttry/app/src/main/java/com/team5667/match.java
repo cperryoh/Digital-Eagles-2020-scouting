@@ -50,8 +50,8 @@ public class match extends tab {
 
     }
 
-    //fuck this, it does some shit
-    //tbh tho it resets the progress bar and match scouting windows
+    //f*ck this, it does some sh*t
+    //tbh tho it resets the progress bar and match scouting window
     public void reset() {
         progressBar.setProgress(100);
         //progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
@@ -110,7 +110,7 @@ public class match extends tab {
         });
         //progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
         progressBar.setProgress(progressBar.getMax());
-        timeBox = (TextView) view.findViewById(R.id.time);
+        timeBox = view.findViewById(R.id.time);
         timeBox.setText(Integer.toString(maxTime));
 
         //timer

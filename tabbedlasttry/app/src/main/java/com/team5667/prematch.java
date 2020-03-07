@@ -20,11 +20,11 @@ public class prematch extends tab {
     public EditText teamNumber;
     public EditText name;
     public EditText roundNumber;
-    public Spinner prePos;
 
     public prematch(String tabText, int layout) {
         super(tabText, layout);
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,29 +35,30 @@ public class prematch extends tab {
         }
         pageViewModel.setIndex(index);
     }
-    public String getName(){
+
+    public String getName() {
         return name.getText().toString();
     }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.prematch, container, false);
-        final Button button = (Button) view.findViewById(R.id.button);
+        final Button button = view.findViewById(R.id.button);
 
-        teamNumber = (EditText) view.findViewById(R.id.teamNum);
-        name=view.findViewById(R.id.prematchName);
-        roundNumber = (EditText) view.findViewById(R.id.roundNum);
-        prePos =(Spinner)view.findViewById(R.id.pos);
+        teamNumber = view.findViewById(R.id.teamNum);
+        name = view.findViewById(R.id.prematchName);
+        roundNumber = view.findViewById(R.id.roundNum);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainActivity mainActivity = (MainActivity) getActivity();
-                if(ready()) {
+                if (ready()) {
                     mainActivity.startMatch();
-                    mainActivity.storeVal("web",mainActivity.setupWindowFrag.webAppUrl.getText().toString());
-                    mainActivity.storeVal("sheet",mainActivity.setupWindowFrag.sheetUrl.getText().toString());
+                    mainActivity.storeVal("web", mainActivity.setupWindowFrag.webAppUrl.getText().toString());
+                    mainActivity.storeVal("sheet", mainActivity.setupWindowFrag.sheetUrl.getText().toString());
 
-                }else {
-                    Toast.makeText(getContext(),"Please ensure all values have been filled out",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), "Please ensure all values have been filled out", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -66,15 +67,16 @@ public class prematch extends tab {
     }
 
     //checks if the user is ready to move to the next window
-    boolean ready(){
-        return MainActivity.textNotEmpty(teamNumber)&&MainActivity.textNotEmpty(roundNumber)&&MainActivity.checkSpinnerChange(prePos);
+    boolean ready() {
+        return MainActivity.textNotEmpty(teamNumber) && MainActivity.textNotEmpty(roundNumber);
     }
-    public void reset(){
+
+    public void reset() {
         roundNumber.setText("");
         teamNumber.setText("");
         name.setText("");
-        prePos.setSelection(0);
     }
+
     public int GetRoundNumber() {
         return Integer.parseInt(roundNumber.getText().toString());
     }

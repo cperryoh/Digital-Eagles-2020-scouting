@@ -62,6 +62,12 @@
                 android:layout_height="wrap_content"
                 android:text="Parked" />
 
+            <CheckBox
+                android:id="@+id/win"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="They won" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
