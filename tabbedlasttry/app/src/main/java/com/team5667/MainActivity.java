@@ -314,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //get round number
-    public int getRoundNumer() {
+    public int getRoundNumber() {
         return prematchFrag.GetRoundNumber();
     }
 
