@@ -1,43 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Space
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="23dp" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/LevelThree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:tag="missed"
-        android:text="Missed" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="36dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="36dp" />
 
-    <Button
-        android:id="@+id/LevelTwo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:tag="Upper"
-        android:text="Outer Hole" />
+            <Button
+                android:id="@+id/LevelTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="Upper"
+                android:text="Upper Hole" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="55dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
 
-    <Button
-        android:id="@+id/LevelOne"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:tag="Lower"
-        android:text="Lower Hole" />
+            <Button
+                android:id="@+id/LevelOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="Lower"
+                android:text="Lower Hole" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="102dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="23dp" />
+
+            <Button
+                android:id="@+id/LevelThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="missed"
+                android:text="Missed" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="55dp" />
+
+            <ImageView
+                android:id="@+id/loadPort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/power_ports" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
