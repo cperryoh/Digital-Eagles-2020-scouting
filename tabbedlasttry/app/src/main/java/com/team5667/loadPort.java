@@ -98,28 +98,6 @@ public class loadPort extends tab {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(layout, container, false);
         parent = (match) getParentFragment().getParentFragment();
-        port=view.findViewById(R.id.loadPort);
-        port.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int test = event.getPointerCount();
-                int x = (int) event.getRawX();
-                int y = (int) event.getRawY();
-                int[] viewCoords = new int[2];
-                port.getLocationInWindow(viewCoords);
-                int imageX = x- viewCoords[0]; // viewCoords[0] is the X coordinate
-                int imageY =y- viewCoords[1];
-                Drawable draw = getResources().getDrawable(R.drawable.map);
-                Bitmap bitmap = ((BitmapDrawable)draw).getBitmap();
-                int pixel = bitmap.getPixel(imageX,imageY);
-                int redValue = Color.red(pixel);
-                int blueValue = Color.blue(pixel);
-                int greenValue = Color.green(pixel);
-                Toast.makeText(getContext(),redValue+","+greenValue+","+blueValue,Toast.LENGTH_SHORT).show();
-
-                return false;
-            }
-        });
         activity = (MainActivity) getActivity();
         //fetches all the buttons
         Button one = view.findViewById(R.id.LevelOne);
